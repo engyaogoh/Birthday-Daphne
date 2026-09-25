@@ -139,6 +139,7 @@ nav .nav-links a:hover{color:var(--gold)}
 <div class="gallery-item"><img src="daphne_26.jpeg" alt="Daphne photo 26" loading="lazy"><div class="gallery-overlay">&#128149; Forever loved &#128149;</div></div>
 </div></section>
 <section id="closing"><div class="big-emoji">&#127874;&#129395;&#127881;</div><h2>Happy 35th Birthday,<br>Daphne!</h2><p>To the happy nut of our family tree &#8212; may your next year be filled with as much laughter, courage, and joy as you've given all of us.</p><p style="font-size:1.2rem;">You live. You love. You explore. You have fun.<br><strong>And you have no regrets.</strong> &#10024;</p><div class="signoff">With all our love &#8212; Your family &#10084;&#65039;</div></section>
+<script src="gsap.min.js"></script>
 <script>
 var canvas=document.getElementById('confetti-canvas'),ctx=canvas.getContext('2d');var W,H;
 function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}resize();window.addEventListener('resize',resize);
@@ -155,5 +156,8 @@ var storyScroll=document.getElementById('storyScroll');
 var sto=new IntersectionObserver(function(es){for(var i=0;i<es.length;i++){if(es[i].isIntersecting){es[i].target.classList.add('visible')}}},{threshold:0.3,root:storyScroll});
 var sl=document.querySelectorAll('.story-line');for(var i=0;i<sl.length;i++){(function(idx){setTimeout(function(){sto.observe(sl[idx])},idx*50)})(i)}
 var nav=document.getElementById('navbar');window.addEventListener('scroll',function(){if(window.scrollY>100){nav.classList.add('scrolled')}else{nav.classList.remove('scrolled')}});
+
+// GSAP fancy intro (graceful no-op if gsap.min.js fails to load)
+if(window.gsap){gsap.from('.hero-badge,.hero h1,.hero-subtitle,.hero .sub',{y:40,opacity:0,duration:1,stagger:0.25,ease:'power3.out',delay:0.2});gsap.from('.scroll-hint',{opacity:0,duration:1,delay:1.8});}
 
 </script></body></html>
